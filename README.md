@@ -4,13 +4,12 @@
 # summaryBox
 
 <!-- badges: start -->
-
 <!-- badges: end -->
 
 The objective of this package is to add value / info boxes in shiny and
 Rmarkdown (bootstrap 4). Value and Info Boxes are very popular to
 display insights in colorful boxes, they are available in
-`shinydashboard` package but not in shiny and Rmarkdown. See the **complete documentation of** [summaryBox](https://www.listendata.com/2021/03/value-info-box-in-shiny-rmarkdown.html).
+`shinydashboard` package but not in shiny and Rmarkdown.
 
 ## Installation
 
@@ -18,7 +17,7 @@ You can install the released version of summaryBox from Github with:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("deepanshu88/summaryBox")
+remotes::install_github("andryas/summaryBox")
 ```
 
 ## Example
@@ -85,8 +84,7 @@ server <- function(input, output, session) {
 
 # Run App
 shinyApp(ui = ui, server = server)
-#> 
-#> Listening on http://127.0.0.1:3921
+#> PhantomJS not found. You can install it with webshot::install_phantomjs(). If it is installed, please make sure the phantomjs executable can be found via the PATH variable.
 ```
 
-<img src="man/figures/summaryBox.PNG" width="100%" />
+<div style="width: 100% ; height: 400px ; text-align: center; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box;" class="muted well">Shiny applications not supported in static R Markdown documents</div>
