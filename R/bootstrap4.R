@@ -4,25 +4,17 @@
 #' @export
 loadFontAwesome <- function() {
 
-list(
-
-  # Font Awesome
-  htmltools::htmlDependency(name = "font-awesome",
-                            version = "5.13.0",
-                            src = "fontawesome",
-                            package = "fontawesome",
-                            stylesheet = c("css/all.min.css", "css/v4-shims.min.css")),
-
-  # Custom CSS
-  htmltools::htmlDependency(
-    name = "summarybox-style",
-    version = "0.1.0",
-    src = "css",
-    package = "summaryBox",
-    stylesheet = "style.css"
+  list(
+    # Custom CSS
+    htmltools::htmlDependency(
+      name = "summarybox-style",
+      version = "0.1.0",
+      src = "css",
+      package = "summaryBox",
+      stylesheet = "style.css"
     )
 
-)
+  )
 
 }
 
@@ -98,40 +90,40 @@ list(
 #'
 #' # Run App
 #' shinyApp(ui = ui, server = server)
-
+#'
 summaryBox <- function(title, value, width = 4, icon = "fas fa-chart-bar", style = "info", border = "left") {
 
-infotag  <-  tags$div(
-  class = paste0("col-md-", width),
-  tags$div(
-    class = paste0("card border-", border, "-", style, " shadow h-100 py-2"),
+  infotag <- tags$div(
+    class = paste0("col-md-", width),
+    style = "margin-top: 40px; margin-bottom: 40px;",
     tags$div(
-      class = "card-body",
+      class = paste0("card border-", border, "-", style, " shadow h-100 py-2"),
       tags$div(
-        class = "row no-gutters align-items-center",
+        class = "card-body",
         tags$div(
-          class = "col mr-2",
+          class = "row no-gutters align-items-center",
           tags$div(
-            class = paste0("text-xs font-weight-bold text-", style, " text-uppercase mb-1"),
-            toupper(title)
+            class = "col mr-2",
+            tags$div(
+              class = paste0("text-xs font-weight-bold text-", style, " text-uppercase mb-1"),
+              toupper(title)
+            ),
+            tags$div(
+              class = "h5 mb-0 font-weight-bold text-gray-800",
+              value
+            )
           ),
           tags$div(
-            class = "h5 mb-0 font-weight-bold text-gray-800",
-            value
+            class = "col-auto",
+            fontawesome::fa(icon, height = "4em", fill = "#dddfeb")
           )
-        ),
-        tags$div(
-          class = "col-auto",
-          tags$i(class = paste(icon, "fa-2x text-gray-300"))
         )
       )
     )
   )
-)
 
   htmltools::htmlDependencies(infotag) <- loadFontAwesome()
-  htmltools::browsable(infotag)
-
+  return(infotag)
 }
 
 #' Info / Value Box in Shiny Apps and RMarkdown
@@ -207,11 +199,12 @@ infotag  <-  tags$div(
 #' shinyApp(ui = ui, server = server)
 summaryBox2 <- function(title, value, width = 4, icon = "fas fa-chart-bar", style = "info") {
 
-valuetag  <- tags$div(
+  infotag <- tags$div(
     class = paste0("col-md-", width),
+    style = "margin-top: 40px; margin-bottom: 40px;",
     tags$div(
       class = paste("card-counter", style),
-      tags$i(class = icon),
+      fontawesome::fa(icon, height="4em"),
       tags$span(
         class = "count-numbers",
         value
@@ -223,8 +216,8 @@ valuetag  <- tags$div(
     )
   )
 
-htmltools::htmlDependencies(valuetag) <- loadFontAwesome()
-htmltools::browsable(valuetag)
+  htmltools::htmlDependencies(infotag) <- loadFontAwesome()
+  return(infotag)
 
 }
 
@@ -299,17 +292,22 @@ htmltools::browsable(valuetag)
 #'
 #' # Run App
 #' shinyApp(ui = ui, server = server)
-summaryBox3 <- function(title, value, width = 4, icon = "fas fa-chart-bar", style = "info") {
+summaryBox3 <- function(title, value, width = 4, icon = "fas fa-dollar-sign", style = "info") {
 
-  infotag  <- tags$div(
+  infotag <- tags$div(
     class = paste0("col-md-", width),
+    style = "margin-top: 40px; margin-bottom: 40px;",
     tags$div(
       class = paste0("card border-", style, " mx-sm-1 p-3"),
-      tags$div(
-        class = paste0("card border-", style, " shadow text-", style , " p-3 my-card"),
-        tags$span(
-          class = paste("myicon", icon),
-          `aria-hidden` = "true"
+      tags$div(style = "width: 100%; margin-top:-45px;", align="center",
+        tags$div(
+          style = "width: 75px",
+          class = paste0("card border-", style, " shadow text-", style, " p-3 my-card"),
+          tags$span(
+            class = "myicon",
+            `aria-hidden` = "true",
+             fontawesome::fa(icon, height = "2em")
+          )
         )
       ),
       tags$div(
@@ -324,6 +322,5 @@ summaryBox3 <- function(title, value, width = 4, icon = "fas fa-chart-bar", styl
   )
 
   htmltools::htmlDependencies(infotag) <- loadFontAwesome()
-  htmltools::browsable(infotag)
+  return(infotag)
 }
-

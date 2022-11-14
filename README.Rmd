@@ -26,7 +26,7 @@ You can install the released version of summaryBox from Github with:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("deepanshu88/summaryBox")
+remotes::install_github("andryas/summaryBox")
 ```
 
 ## Example

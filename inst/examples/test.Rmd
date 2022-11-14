@@ -12,5 +12,18 @@ library(summaryBox)
 ```
 
 ```{r box}
-summaryBox("Earnings (Monthly)", "$40,000", width = 3, icon = "fas fa-calendar", style = "info")
+summaryBox("Earnings (Monthly)", "$40,000", width = 12, icon = "fas fa-calendar", style = "info")
+summaryBox2("Earnings (Monthly)", "$40,000", width = 12, icon = "fas fa-calendar", style = "info")
+summaryBox2("Earnings (Monthly)", "$40,000", width = 4, icon = "fas fa-calendar", style = "info")
+summaryBox2("Earnings (Monthly)", "$40,000", width = 6, icon = "fas fa-calendar", style = "info")
+shiny::column(12, align = "center", summaryBox3("Earnings (Monthly)", "$40,000", width = 12, icon = "fas fa-calendar", style = "info"))
+summaryBox3("Earnings (Monthly)", "$40,000", width = 12, icon = "fas fa-calendar", style = "info")
+summaryBox3("Earnings (Monthly)", "$40,000", width = 4, icon = "fas fa-calendar", style = "info")
+summaryBox3("Earnings (Monthly)", "$40,000", width = 6, icon = "fas fa-calendar", style = "info")
+
+
+shiny::fluidPage(
+  summaryBox3("Earnings (Monthly)", "$40,000", width = 6, icon = "fas fa-calendar", style = "info"),
+  summaryBox3("Earnings (Monthly)", "$40,000", width = 6, icon = "fas fa-calendar", style = "info")
+)
 ```
